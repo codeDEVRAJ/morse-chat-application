@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Morse Chat</title>
+   <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         font-family: 'Poppins', sans-serif;
+      }
+      body {
+         display: flex;
+         height: 100vh;
+         background-color: #121212;
+         color: #fff;
+      }
+      .chat-container {
+         display: flex;
+         width: 100%;
+         height: 100%;
+      }
+      .sidebar {
+         width: 25%;
+         background: #1e1e1e;
+         padding: 15px;
+         display: flex;
+         flex-direction: column;
+      }
+      .chat-area {
+         width: 75%;
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+         background: #252525;
+         padding: 15px;
+      }
+      .messages {
+         flex-grow: 1;
+         overflow-y: auto;
+         padding-bottom: 10px;
+      }
+      .message {
+         margin: 8px 0;
+         padding: 10px;
+         border-radius: 10px;
+         max-width: 70%;
+      }
+      .sent {
+         background: #ffcc00;
+         color: #121212;
+         align-self: flex-end;
+      }
+      .received {
+         background: #333;
+         align-self: flex-start;
+      }
+      .input-area {
+         display: flex;
+         padding: 10px;
+         background: #1e1e1e;
+         border-radius: 5px;
+      }
+      input {
+         flex-grow: 1;
+         padding: 10px;
+         border: none;
+         outline: none;
+         border-radius: 5px;
+      }
+      .send-btn {
+         background: #ffcc00;
+         color: #121212;
+         border: none;
+         padding: 10px;
+         margin-left: 10px;
+         cursor: pointer;
+         border-radius: 5px;
+      }
+   </style>
+</head>
+<body>
+   <div class="chat-container">
+      <div class="sidebar">
+         <h2>Morse Chat</h2>
+         <p>Contacts List</p>
+         <!-- User list goes here -->
+      </div>
+      <div class="chat-area">
+         <div class="messages">
+            <div class="message received">Hello!</div>
+            <div class="message sent">Hi, how are you?</div>
+         </div>
+         <div class="input-area">
+            <input type="text" placeholder="Type your message...">
+            <button class="send-btn">Send</button>
+         </div>
+      </div>
+   </div>
+</body>
+</html>

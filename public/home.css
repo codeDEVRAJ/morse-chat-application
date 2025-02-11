@@ -1,0 +1,27 @@
+h1 {
+   color: rgb(22, 20, 20);
+   background-color: beige;
+   display: flex;
+   flex-wrap: wrap;
+   height: 2vh;
+   width: 100vw;
+   justify-content: center;
+   align-items: center;
+   margin: 0px;
+   padding: 21px;
+}
+
+.first_link{
+   background-color: whitesmoke;
+   color: black;
+   border: 3px solid whitesmoke;
+   box-shadow: 3px;
+   height: 100px;
+   padding-left: 100px;
+   padding-bottom: 30px;
+   margin-left: 1px;
+   justify-content: center;
+   align-items: center;
+   display: flex;
+   flex-wrap: wrap;
+}
