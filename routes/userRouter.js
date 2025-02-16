@@ -2,15 +2,10 @@ const express = require('express');
 const rootDir = require('../utils/pathUtil');
 const path = require('path');
 const userRouter = express.Router();
-userRouter.get("/" ,(req, res , next) =>{
-   res.sendFile(path.join(rootDir, 'views' , 'home.html'));
-});
-userRouter.get("/home/features.html", (req, res, next) => {
-   res.sendFile(path.join(rootDir, "home", "features.html"));
-});
-userRouter.get("/home/about.html",(req , res , next) =>{
-   res.sendFile(path.join(rootDir , "home" , "about.html"));
-});
+const homesController =require('../controllers/homes');
+userRouter.get("/" ,homesController.getHome);
+userRouter.get("/home/features.html", homesController.getFeatures );
+userRouter.get("/home/about.html", homesController.getAbout);
 
 
 module.exports = userRouter;
