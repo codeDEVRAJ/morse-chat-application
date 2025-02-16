@@ -5,7 +5,7 @@ const userRouter = require("./routes/userRouter");
 const hostRouter = require('./routes/hostRouter');
 const rootDir = require('./utils/pathUtil');
 const path = require('path');
-
+const ErrorHandler = require('./controllers/errorCtr');
 const app = express();
 
 app.use(express.static(path.join(rootDir , 'public')));
@@ -21,9 +21,7 @@ app.use(hostRouter);
 
 
 
-app.use((req ,res , next) =>{
-   res.status(404).sendFile(path.join(rootDir, 'views' , '404.html'));
-});
+app.use(ErrorHandler.getError);
 
 const port = 3003;
 app.listen(port , () =>{
