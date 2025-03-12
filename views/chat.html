@@ -3,7 +3,10 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>I - chat</title>
+   <title>Morse Chatroom - Decode, Chat & Learn</title>
+   <link rel="icon" type="image/png/jpg" href="/images/logoOFMORSERCHAT.jpg">
+   <script defer src="http://localhost:3003/socket.io/socket.io.js"></script>
+   <script defer src="/client.js"></script>
   </head>
 <style>
    /* Modern Morse Chat App Styles */
@@ -289,8 +292,8 @@ nav ul li a:hover {
    </nav>
 
    <div class="container">
-      <div class="message left" > harry : how are you</div>
-      <div class="message right">devraj : bhai i am fine</div>
+      <!-- <div class="message left" ></div>
+      <div class="message right"></div> -->
    </div>
    <div class="send">
       <form action="" id="send-container">
