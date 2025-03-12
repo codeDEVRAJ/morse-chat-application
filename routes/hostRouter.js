@@ -10,6 +10,6 @@ const { sign } = require('crypto');
 
 hostRouter.get("/home/contact.html" , homesController.getContact);
 hostRouter.post("/home/contact" , homesController.PostContacted);
-
+hostRouter.get('/home/trnst.html', homesController.getTranslate);
 
 module.exports = hostRouter;

@@ -25,7 +25,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(userRouter);
 app.use(hostRouter);
 app.use(chatController);
-
 // Handle errors (should be last)
 app.use(ErrorHandler.getError);
 

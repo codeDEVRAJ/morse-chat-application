@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morse Code Translator</title>
+    <style>
+        /* Chat Application Themed Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #121212; /* Dark Theme */
+            color: #ffffff; /* Light Text */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px); /* Glass Effect */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: #1DB954; /* Matching chat app accent color */
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #18a74e;
+        }
+        .back-btn {
+         display: inline-block;
+         margin-top: 15px;
+         padding: 12px 20px;
+         background-color: #ffcc00;
+         color: #121212;
+         font-size: 16px;
+         font-weight: bold;
+         cursor: pointer;
+         border-radius: 5px;
+         text-decoration: none;
+         transition: background 0.3s ease-in-out;
+      }
+
+      .back-btn:hover {
+         background-color: #ffdd44;
+      }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Morse Code Translator</h2>
+        <input type="text" id="morseInput" placeholder="Enter Morse Code or English">
+        <button onclick="translateMorse()">Translate</button>
+        <input type="text" id="output" placeholder="Output" readonly>
+
+
+        <a href="/" class="back-btn">Go Back to Home</a>
+    </div>
+
+    <script>
+        const morseToEnglish = {
+            ".-": "A", "-...": "B", "-.-.": "C", "-..": "D", ".": "E",
+            "..-.": "F", "--.": "G", "....": "H", "..": "I", ".---": "J",
+            "-.-": "K", ".-..": "L", "--": "M", "-.": "N", "---": "O",
+            ".--.": "P", "--.-": "Q", ".-.": "R", "...": "S", "-": "T",
+            "..-": "U", "...-": "V", ".--": "W", "-..-": "X", "-.--": "Y",
+            "--..": "Z", "-----": "0", ".----": "1", "..---": "2", "...--": "3",
+            "....-": "4", ".....": "5", "-....": "6", "--...": "7", "---..": "8",
+            "----.": "9", "/": " "
+        };
+
+        const englishToMorse = Object.fromEntries(Object.entries(morseToEnglish).map(([k, v]) => [v, k]));
+
+        function translateMorse() {
+            let input = document.getElementById("morseInput").value.trim();
+            let outputField = document.getElementById("output");
+
+            if (input.includes(".") || input.includes("-")) {
+                outputField.value = input.split(" ").map(code => morseToEnglish[code] || "").join("");
+            } else {
+                outputField.value = input.toUpperCase().split("").map(char => englishToMorse[char] || "").join(" ");
+            }
+        }
+    </script>
+
+</body>
+</html>

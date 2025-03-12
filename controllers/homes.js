@@ -16,3 +16,7 @@ exports.PostContacted =(req, res , next) =>{
 console.log(req.body);
 res.sendFile(path.join(rootDir , 'home' , 'contacted.html'));
 }
+exports.getTranslate = (req , res, next)=>{
+   const fp = path.join(rootDir , 'home' , 'trnst.html');
+   res.sendFile(fp);
+};
