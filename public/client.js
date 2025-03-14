@@ -1,9 +1,8 @@
-// const { fromJSON } = require("postcss");
 
 const socket = io('http://192.168.1.35:3003');
 const form = document.getElementById('send-container');
 const messageInput = document.getElementById('messageInp');
-const messageContainer = document.querySelector('.container'); // Fixed selector
+const messageContainer = document.querySelector('.container'); 
 
 form.addEventListener('submit' , (e)=>{
    e.preventDefault();
@@ -24,8 +23,6 @@ const append = (message, position) => {
    }
 }
 
-
-// 👇 Tab-specific name input
 const Name = prompt("Enter your name to join"); 
 if (Name){
 socket.emit('new-user-joined', Name);
@@ -35,7 +32,7 @@ else {
    location.reload();
 }
 
-// 👇 Yeh theek karega ki pehle wale tab mein naye user ka naam aaye
+
 socket.on('user-joined', data => {
    append(`${data} joined the chat`, 'right'); 
 });
