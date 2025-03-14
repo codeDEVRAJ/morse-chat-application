@@ -28,7 +28,7 @@ The application features a sleek and intuitive interface that makes Morse code m
 - A clean and modern layout with an input box for Morse code and text translation.
 
 
-###🔹 **Username input**
+### 🔹 **UserName Input**
 ![WhatsApp Image 2025-03-14 at 19 16 09_3723eb13](https://github.com/user-attachments/assets/ebfa0169-bd7d-41e5-9e40-3a58a899ff5e)
 - simply thorugh prompt we are taking user name
 
