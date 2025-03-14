@@ -71,3 +71,12 @@ This project has immense potential for expansion. Some planned features include:
 ---
 🚀 **Keep Innovating & Keep Learning!** The journey of technology is endless, and every small step makes a difference. Happy coding! Made by **Devraj Honmane** 😎
 
+## interface
+home page
+
+- ![WhatsApp Image 2025-03-14 at 19 15 26_180feb46](https://github.com/user-attachments/assets/64491092-ac47-4d18-b3a7-cf9e71d0e2e8)
+
+
+
+
+
