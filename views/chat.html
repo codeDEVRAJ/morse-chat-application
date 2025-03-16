@@ -5,9 +5,9 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Morse Chatroom - Decode, Chat & Learn</title>
    <link rel="icon" type="image/png/jpg" href="/images/logoOFMORSERCHAT.jpg">
-   <script defer src="http://192.168.1.35:3003/socket.io/socket.io.js"></script>
+   <script defer src="http://192.168.1.34:3003/socket.io/socket.io.js"></script>
    <script defer src="/client.js"></script>
-  </head>
+</head>
 <style>
    /* Modern Morse Chat App Styles */
 
@@ -25,12 +25,10 @@ body {
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   height: 100vh;
+   min-height: 100vh;
    padding: 20px;
-   overflow: hidden;
 }
 
-/* Navbar */
 /* Navbar */
 nav {
    width: 100%;
@@ -99,7 +97,6 @@ nav ul li a:hover {
    color: #ff8800;
    text-shadow: 0 0 10px rgba(255, 200, 0, 0.8);
 }
-
 
 /* Chat Container */
 .container {
@@ -194,43 +191,7 @@ nav ul li a:hover {
    background: linear-gradient(135deg, #ff8800, #dd5500);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-   .container {
-       width: 100%;
-       height: 60vh;
-   }
-   
-   #send-container {
-       flex-direction: column;
-       align-items: center;
-   }
-   
-   #messageInp {
-       width: 100%;
-       margin-bottom: 10px;
-   }
-   
-   .btn {
-       width: 100%;
-   }
-   
-   nav {
-       flex-direction: column;
-       align-items: center;
-   }
-   
-   .logo {
-       margin-bottom: 10px;
-   }
-}
-
-/* Animations */
-@keyframes fadeIn {
-   from { opacity: 0; transform: translateY(10px); }
-   to { opacity: 1; transform: translateY(0); }
-}
-
+/* Morse Keyboard */
 .morse-keyboard {
    display: flex;
    flex-wrap: wrap;
@@ -270,7 +231,102 @@ nav ul li a:hover {
    color: #ff8800;
 }
 
+/* Translator Section */
+.translator {
+   width: 90%;
+   max-width: 600px;
+   margin-top: 20px;
+   padding: 20px;
+   background: rgba(40, 40, 40, 0.95);
+   border-radius: 15px;
+   box-shadow: 0 4px 10px rgba(255, 255, 255, 0.15);
+   border: 1px solid rgba(255, 255, 255, 0.2);
+   text-align: center;
+}
+
+.translator h2 {
+   margin-bottom: 15px;
+   font-size: 24px;
+   color: #ffcc00;
+}
+
+.translator input {
+   width: 100%;
+   padding: 14px;
+   margin-bottom: 10px;
+   border: none;
+   border-radius: 10px;
+   outline: none;
+   font-size: 16px;
+   background: rgba(255, 255, 255, 0.1);
+   color: #fff;
+   transition: 0.3s;
+}
+
+.translator input:focus {
+   background: rgba(255, 255, 255, 0.2);
+   border: 1px solid #ffcc00;
+}
+
+.translator button {
+   padding: 14px 20px;
+   border: none;
+   border-radius: 10px;
+   cursor: pointer;
+   background: linear-gradient(135deg, #ff6600, #cc4400);
+   color: white;
+   transition: all 0.3s ease-in-out;
+   font-weight: bold;
+}
+
+.translator button:hover {
+   transform: scale(1.05);
+   background: linear-gradient(135deg, #ff8800, #dd5500);
+}
+
+.translator #output {
+   width: 100%;
+   padding: 14px;
+   margin-top: 10px;
+   border: none;
+   border-radius: 10px;
+   outline: none;
+   font-size: 16px;
+   background: rgba(255, 255, 255, 0.1);
+   color: #fff;
+   transition: 0.3s;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
+   .container {
+       width: 100%;
+       height: 60vh;
+   }
+   
+   #send-container {
+       flex-direction: column;
+       align-items: center;
+   }
+   
+   #messageInp {
+       width: 100%;
+       margin-bottom: 10px;
+   }
+   
+   .btn {
+       width: 100%;
+   }
+   
+   nav {
+       flex-direction: column;
+       align-items: center;
+   }
+   
+   .logo {
+       margin-bottom: 10px;
+   }
+   
    .morse-key {
        height: 35px;
        width: 35px;
@@ -278,12 +334,16 @@ nav ul li a:hover {
    }
 }
 
+/* Animations */
+@keyframes fadeIn {
+   from { opacity: 0; transform: translateY(10px); }
+   to { opacity: 1; transform: translateY(0); }
+}
 </style>
 <body>
-   <nav >
+   <nav>
     <div class="lgo">
       <img class="logo" src="/images/Designer.jpeg" alt="morse code logo">
-
       <ul>
          <li><a href="/">Home</a></li>
          <li><a href="/home/trnst.html">Translator</a></li>
@@ -292,14 +352,12 @@ nav ul li a:hover {
    </nav>
 
    <div class="container">
-      <!-- <div class="message left" ></div>
-      <div class="message right"></div> -->
+      <!-- Chat messages will appear here -->
    </div>
    <div class="send">
       <form action="" id="send-container">
          <input type="text" name="messageInp" id="messageInp">
-         <button type="submit" class="btn">submit</button>
-
+         <button type="submit" class="btn">Submit</button>
       </form>
    </div>
 
@@ -332,12 +390,37 @@ nav ul li a:hover {
       <button class="morse-key" onclick="addMorse('--..')">Z</button>
    </div>
 
+   <div class="translator">
+      <h2>Morse Code Translator</h2>
+      <input type="text" id="morseInput" placeholder="Enter Morse Code or English">
+      <button onclick="translateMorse()">Translate</button>
+      <input type="text" id="output" placeholder="Output" readonly>
+   </div>
+
    <script>
-      function addMorse(code) {
-         let inputField = document.getElementById("messageInp");
-         inputField.value += code + " ";
+      const morseToEnglish = {
+          ".-": "A", "-...": "B", "-.-.": "C", "-..": "D", ".": "E",
+          "..-.": "F", "--.": "G", "....": "H", "..": "I", ".---": "J",
+          "-.-": "K", ".-..": "L", "--": "M", "-.": "N", "---": "O",
+          ".--.": "P", "--.-": "Q", ".-.": "R", "...": "S", "-": "T",
+          "..-": "U", "...-": "V", ".--": "W", "-..-": "X", "-.--": "Y",
+          "--..": "Z", "-----": "0", ".----": "1", "..---": "2", "...--": "3",
+          "....-": "4", ".....": "5", "-....": "6", "--...": "7", "---..": "8",
+          "----.": "9", "/": " "
+      };
+
+      const englishToMorse = Object.fromEntries(Object.entries(morseToEnglish).map(([k, v]) => [v, k]));
+
+      function translateMorse() {
+          let input = document.getElementById("morseInput").value.trim();
+          let outputField = document.getElementById("output");
+
+          if (input.includes(".") || input.includes("-")) {
+              outputField.value = input.split(" ").map(code => morseToEnglish[code] || "").join("");
+          } else {
+              outputField.value = input.toUpperCase().split("").map(char => englishToMorse[char] || "").join(" ");
+          }
       }
-   </script>
-   
+  </script>
 </body>
 </html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Learn Morse Code</title>
+   <link rel="icon" type="image/png/jpg" href="/images/logoOFMORSERCHAT.jpg">
+   <style>
+      /* Reuse your existing styles */
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         font-family: 'Poppins', sans-serif;
+      }
+
+      body {
+         background: #121212;
+         color: #fff;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         min-height: 100vh;
+         padding: 20px;
+      }
+
+      /* Navbar */
+      nav {
+         width: 100%;
+         background: rgba(30, 30, 30, 0.8);
+         padding: 15px 25px;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         backdrop-filter: blur(10px);
+         border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .lgo {
+         display: flex;
+         align-items: center;
+      }
+
+      .logo {
+         width: 50px;
+         height: auto;
+         margin-right: 15px;
+         filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.2));
+      }
+
+      nav ul {
+         list-style: none;
+         display: flex;
+         gap: 20px;
+      }
+
+      nav ul li a {
+         text-decoration: none;
+         color: #ffcc00;
+         font-weight: bold;
+         font-size: 18px;
+         padding: 10px 15px;
+         border-radius: 8px;
+         transition: all 0.3s ease-in-out;
+      }
+
+      nav ul li a:hover {
+         color: #ff8800;
+         text-shadow: 0 0 10px rgba(255, 200, 0, 0.8);
+      }
+
+      /* Learn Morse Section */
+      .learn-morse {
+         width: 90%;
+         max-width: 800px;
+         margin-top: 20px;
+         padding: 20px;
+         background: rgba(40, 40, 40, 0.95);
+         border-radius: 15px;
+         box-shadow: 0 4px 10px rgba(255, 255, 255, 0.15);
+         border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .learn-morse h1 {
+         text-align: center;
+         color: #ffcc00;
+         margin-bottom: 20px;
+         font-size: 28px;
+      }
+
+      .intro, .rules {
+         margin-bottom: 30px;
+      }
+
+      .intro h2, .rules h2, .practice h2 {
+         color: #ffcc00;
+         margin-bottom: 10px;
+         font-size: 24px;
+      }
+
+      .intro p, .rules p {
+         line-height: 1.6;
+         font-size: 16px;
+      }
+
+      .rules ul {
+         list-style-type: disc;
+         padding-left: 20px;
+      }
+
+      .rules li {
+         margin-bottom: 10px;
+      }
+
+      .morse-table {
+         width: 100%;
+         border-collapse: collapse;
+         margin-top: 20px;
+      }
+
+      .morse-table th, .morse-table td {
+         padding: 12px;
+         text-align: left;
+         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .morse-table th {
+         background: rgba(255, 204, 0, 0.1);
+         color: #ffcc00;
+         font-size: 18px;
+      }
+
+      .morse-table td {
+         font-size: 16px;
+      }
+
+      .morse-table tr:hover {
+         background: rgba(255, 255, 255, 0.05);
+      }
+
+      /* Practice Section */
+      .practice {
+         margin-top: 30px;
+      }
+
+      .practice input {
+         width: 100%;
+         padding: 12px;
+         margin-bottom: 10px;
+         border: none;
+         border-radius: 8px;
+         background: rgba(255, 255, 255, 0.1);
+         color: #fff;
+         font-size: 16px;
+      }
+
+      .practice button {
+         padding: 12px 20px;
+         border: none;
+         border-radius: 8px;
+         background: linear-gradient(135deg, #ff6600, #cc4400);
+         color: #fff;
+         font-size: 16px;
+         cursor: pointer;
+         transition: all 0.3s ease;
+      }
+
+      .practice button:hover {
+         transform: scale(1.05);
+         background: linear-gradient(135deg, #ff8800, #dd5500);
+      }
+
+      .practice #practiceOutput {
+         margin-top: 10px;
+         font-size: 18px;
+         color: #ffcc00;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+         .learn-morse {
+            width: 100%;
+         }
+
+         .morse-table th, .morse-table td {
+            font-size: 14px;
+            padding: 10px;
+         }
+      }
+   </style>
+</head>
+<body>
+   <nav>
+      <div class="lgo">
+         <img class="logo" src="/images/Designer.jpeg" alt="morse code logo">
+         <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/home/trnst.html">Translator</a></li>
+            <li><a href="/home/learn-morse.html">Learn Morse</a></li>
+         </ul>
+      </div>
+   </nav>
+
+   <div class="learn-morse">
+      <h1>Learn Morse Code</h1>
+
+      <!-- Introduction Section -->
+      <div class="intro">
+         <h2>What is Morse Code?</h2>
+         <p>
+            Morse code is a method used in telecommunication to encode text characters as standardized sequences of two different signal durations, called dots and dashes. It was developed by Samuel Morse and Alfred Vail in the 1830s and became widely used for telegraph communication.
+         </p>
+      </div>
+
+      <!-- Rules Section -->
+      <div class="rules">
+         <h2>Basic Rules of Morse Code</h2>
+         <ul>
+            <li>A <strong>dot (.)</strong> represents a short signal or "dit".</li>
+            <li>A <strong>dash (-)</strong> represents a long signal or "dah".</li>
+            <li>The space between parts of the same letter is <strong>1 unit</strong>.</li>
+            <li>The space between letters is <strong>3 units</strong>.</li>
+            <li>The space between words is <strong>7 units</strong>.</li>
+         </ul>
+      </div>
+
+      <!-- Morse Code Table -->
+      <h2>Morse Code Chart</h2>
+      <table class="morse-table">
+         <thead>
+            <tr>
+               <th>Character</th>
+               <th>Morse Code</th>
+               <th>Pronunciation</th>
+            </tr>
+         </thead>
+         <tbody>
+            <!-- Alphabet -->
+            <tr><td>A</td><td>.-</td><td>Dot Dash</td></tr>
+            <tr><td>B</td><td>-...</td><td>Dash Dot Dot Dot</td></tr>
+            <tr><td>C</td><td>-.-.</td><td>Dash Dot Dash Dot</td></tr>
+            <tr><td>D</td><td>-..</td><td>Dash Dot Dot</td></tr>
+            <tr><td>E</td><td>.</td><td>Dot</td></tr>
+            <tr><td>F</td><td>..-.</td><td>Dot Dot Dash Dot</td></tr>
+            <tr><td>G</td><td>--.</td><td>Dash Dash Dot</td></tr>
+            <tr><td>H</td><td>....</td><td>Dot Dot Dot Dot</td></tr>
+            <tr><td>I</td><td>..</td><td>Dot Dot</td></tr>
+            <tr><td>J</td><td>.---</td><td>Dot Dash Dash Dash</td></tr>
+            <tr><td>K</td><td>-.-</td><td>Dash Dot Dash</td></tr>
+            <tr><td>L</td><td>.-..</td><td>Dot Dash Dot Dot</td></tr>
+            <tr><td>M</td><td>--</td><td>Dash Dash</td></tr>
+            <tr><td>N</td><td>-.</td><td>Dash Dot</td></tr>
+            <tr><td>O</td><td>---</td><td>Dash Dash Dash</td></tr>
+            <tr><td>P</td><td>.--.</td><td>Dot Dash Dash Dot</td></tr>
+            <tr><td>Q</td><td>--.-</td><td>Dash Dash Dot Dash</td></tr>
+            <tr><td>R</td><td>.-.</td><td>Dot Dash Dot</td></tr>
+            <tr><td>S</td><td>...</td><td>Dot Dot Dot</td></tr>
+            <tr><td>T</td><td>-</td><td>Dash</td></tr>
+            <tr><td>U</td><td>..-</td><td>Dot Dot Dash</td></tr>
+            <tr><td>V</td><td>...-</td><td>Dot Dot Dot Dash</td></tr>
+            <tr><td>W</td><td>.--</td><td>Dot Dash Dash</td></tr>
+            <tr><td>X</td><td>-..-</td><td>Dash Dot Dot Dash</td></tr>
+            <tr><td>Y</td><td>-.--</td><td>Dash Dot Dash Dash</td></tr>
+            <tr><td>Z</td><td>--..</td><td>Dash Dash Dot Dot</td></tr>
+            <!-- Numbers -->
+            <tr><td>1</td><td>.----</td><td>Dot Dash Dash Dash Dash</td></tr>
+            <tr><td>2</td><td>..---</td><td>Dot Dot Dash Dash Dash</td></tr>
+            <tr><td>3</td><td>...--</td><td>Dot Dot Dot Dash Dash</td></tr>
+            <tr><td>4</td><td>....-</td><td>Dot Dot Dot Dot Dash</td></tr>
+            <tr><td>5</td><td>.....</td><td>Dot Dot Dot Dot Dot</td></tr>
+            <tr><td>6</td><td>-....</td><td>Dash Dot Dot Dot Dot</td></tr>
+            <tr><td>7</td><td>--...</td><td>Dash Dash Dot Dot Dot</td></tr>
+            <tr><td>8</td><td>---..</td><td>Dash Dash Dash Dot Dot</td></tr>
+            <tr><td>9</td><td>----.</td><td>Dash Dash Dash Dash Dot</td></tr>
+            <tr><td>0</td><td>-----</td><td>Dash Dash Dash Dash Dash</td></tr>
+            <!-- Punctuation -->
+            <tr><td>.</td><td>.-.-.-</td><td>Dot Dash Dot Dash Dot Dash</td></tr>
+            <tr><td>,</td><td>--..--</td><td>Dash Dash Dot Dot Dash Dash</td></tr>
+            <tr><td>?</td><td>..--..</td><td>Dot Dot Dash Dash Dot Dot</td></tr>
+            <tr><td>'</td><td>.----.</td><td>Dot Dash Dash Dash Dash Dot</td></tr>
+            <tr><td>!</td><td>-.-.--</td><td>Dash Dot Dash Dash Dot Dash</td></tr>
+            <tr><td>/</td><td>-..-.</td><td>Dash Dot Dot Dash Dot</td></tr>
+            <tr><td>(</td><td>-.--.</td><td>Dash Dot Dash Dash Dot</td></tr>
+            <tr><td>)</td><td>-.--.-</td><td>Dash Dot Dash Dash Dot Dash</td></tr>
+            <tr><td>&</td><td>.-...</td><td>Dot Dash Dot Dot Dot</td></tr>
+            <tr><td>:</td><td>---...</td><td>Dash Dash Dash Dot Dot Dot</td></tr>
+            <tr><td>;</td><td>-.-.-.</td><td>Dash Dot Dash Dot Dash Dot</td></tr>
+            <tr><td>=</td><td>-...-</td><td>Dash Dot Dot Dot Dash</td></tr>
+            <tr><td>+</td><td>.-.-.</td><td>Dot Dash Dot Dash Dot</td></tr>
+            <tr><td>-</td><td>-....-</td><td>Dash Dot Dot Dot Dot Dash</td></tr>
+            <tr><td>_</td><td>..--.-</td><td>Dot Dot Dash Dash Dot Dash</td></tr>
+            <tr><td>"</td><td>.-..-.</td><td>Dot Dash Dot Dot Dash Dot</td></tr>
+            <tr><td>$</td><td>...-..-</td><td>Dot Dot Dot Dash Dot Dot Dash</td></tr>
+            <tr><td>@</td><td>.--.-.</td><td>Dot Dash Dash Dot Dash Dot</td></tr>
+         </tbody>
+      </table>
+
+      <!-- Practice Section -->
+      <div class="practice">
+         <h2>Practice Morse Code</h2>
+         <input type="text" id="practiceInput" placeholder="Type a letter, number, or symbol">
+         <button onclick="practiceMorse()">Translate</button>
+         <p id="practiceOutput"></p>
+      </div>
+   </div>
+
+   <script>
+      // Morse Code Practice Function
+      function practiceMorse() {
+         const input = document.getElementById('practiceInput').value.toUpperCase();
+         const output = document.getElementById('practiceOutput');
+         const morseCode = {
+            'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.',
+            'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
+            'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.',
+            'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+            'Y': '-.--', 'Z': '--..',
+            '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....',
+            '6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----',
+            '.': '.-.-.-', ',': '--..--', '?': '..--..', "'": '.----.', '!': '-.-.--',
+            '/': '-..-.', '(': '-.--.', ')': '-.--.-', '&': '.-...', ':': '---...',
+            ';': '-.-.-.', '=': '-...-', '+': '.-.-.', '-': '-....-', '_': '..--.-',
+            '"': '.-..-.', '$': '...-..-', '@': '.--.-.'
+         };
+
+         if (morseCode[input]) {
+            output.textContent = `Morse Code: ${morseCode[input]}`;
+         } else {
+            output.textContent = "Invalid input. Please enter a single letter, number, or symbol.";
+         }
+      }
+   </script>
+</body>
+</html>
