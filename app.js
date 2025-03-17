@@ -60,5 +60,5 @@ app.use(ErrorHandler.getError);
 
 const port = 3003;
 server.listen(port, () => {
-    console.log(`Server running on: http://192.168.1.34:${port}`);
+    console.log(`Server running on: http://192.168.228.249:${port}`);
 });
