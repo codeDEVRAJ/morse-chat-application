@@ -58,7 +58,7 @@ app.use(chatController);
 // Handle errors (should be last)
 app.use(ErrorHandler.getError);
 
-const port = 3003;
+const PORT = process.env.PORT || 3003; 
 server.listen(port, () => {
     console.log(`Server running on: http://localhost:${port}`);
 });
