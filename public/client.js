@@ -1,5 +1,5 @@
 
-const socket = io('http://192.168.228.249:3003');
+const socket = io('http://localhost:3003');
 const form = document.getElementById('send-container');
 const messageInput = document.getElementById('messageInp');
 const messageContainer = document.querySelector('.container'); 
