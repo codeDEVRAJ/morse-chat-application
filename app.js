@@ -35,7 +35,8 @@ io.on('connection', (socket) => {
     });
    
 socket.on('send', (message) => {
-    console.log(`Message received from ${users[socket.id]}:`, message);  // Debug log
+    if (!users[socket.id]) return;  // Prevent sending from undefined users
+    console.log(`Message received from ${users[socket.id]}:`, message);
     socket.broadcast.emit('receive', { message: message, name: users[socket.id] });
 });
 
