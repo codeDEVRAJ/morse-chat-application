@@ -1,4 +1,5 @@
-const socket = io(window.location.origin); // Automatically uses the correct backend URL
+const socket = io("http://localhost:3000");
+ // Automatically uses the correct backend URL
 
 const form = document.getElementById('send-container');
 const messageInput = document.getElementById('messageInp');
