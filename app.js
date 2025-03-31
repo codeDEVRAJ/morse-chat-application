@@ -14,10 +14,11 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-        origin: '*',
+        origin: "https://morse-chat-application-8.onrender.com",  // Allow your frontend
         methods: ["GET", "POST"]
     }
 });
+
 
 
 const users = {};
@@ -37,10 +38,11 @@ io.on('connection', (socket) => {
         socket.broadcast.emit('recieve', { message: message, name: users[socket.id] });
     });
 
-    socket.on('disconnect', message => {
-      socket.broadcast.emit('left' , users[socket.id]);
-        delete users[socket.id];
-    });
+    socket.on('disconnect', () => {
+    socket.broadcast.emit('left', users[socket.id]); // Notify others
+    delete users[socket.id]; // Remove user
+});
+
 });
 
 // Serve static files (CSS, images, JS, etc.)
@@ -66,5 +68,5 @@ app.use(ErrorHandler.getError);
 
 const PORT = process.env.PORT || 4003; 
 server.listen(PORT, () => {
-    console.log(`Server running on: http://localhost:${PORT}`);
+    console.log(`Server running on: https://morse-chat-application-9.onrender.com`);
 });
