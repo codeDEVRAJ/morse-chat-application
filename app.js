@@ -70,5 +70,5 @@ app.use(ErrorHandler.getError);
 
 const PORT = process.env.PORT || 4003; 
 server.listen(PORT, () => {
-    console.log(`Server running on: https://morse-chat-application-9.onrender.com`);
+    console.log(`Server running on: https://morse-chat-application.onrender.com`);
 });
