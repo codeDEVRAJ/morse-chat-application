@@ -1,4 +1,4 @@
-const socket = io("https://morse-chat-application-9.onrender.com/", { transports: ["websocket"] });
+const socket = io("https://morse-chat-application.onrender.com/", { transports: ["websocket"] });
 
  // Automatically uses the correct backend URL
 
