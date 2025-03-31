@@ -1,4 +1,4 @@
-const socket = io("http://localhost:3000");
+const socket = io("https://morse-chat-application-8.onrender.com/");
  // Automatically uses the correct backend URL
 
 const form = document.getElementById('send-container');
