@@ -9,6 +9,7 @@ const messageContainer = document.querySelector('.container');
 form.addEventListener('submit', (e) => {
    e.preventDefault();
    const message = messageInput.value;
+   console.log("Sending message:", message); // Debug log
    append(`You: ${message}`, 'right');
    socket.emit('send', message);
    messageInput.value = '';
@@ -39,9 +40,11 @@ socket.on('user-joined', data => {
    append(`${data} joined the chat`, 'right'); 
 });
 
-socket.on('receive', data => {  // Fixed spelling mistake from 'recieve' -> 'receive'
-   append(`${data.name}: ${data.message}`, 'left');
+socket.on('receive', data => {  
+    console.log("Received message:", data);  // Debug log
+    append(`${data.name}: ${data.message}`, 'left');
 });
+
 
 socket.on('left', data => {
    append(`${data} has left the chat`, 'left');
