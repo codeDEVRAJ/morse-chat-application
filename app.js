@@ -34,9 +34,10 @@ io.on('connection', (socket) => {
         console.log('A user connected' , name);
     });
    
-    socket.on('send', (message) => {
-        socket.broadcast.emit('recieve', { message: message, name: users[socket.id] });
-    });
+socket.on('send', (message) => {
+    console.log(`Message received from ${users[socket.id]}:`, message);  // Debug log
+    socket.broadcast.emit('receive', { message: message, name: users[socket.id] });
+});
 
     socket.on('disconnect', () => {
     socket.broadcast.emit('left', users[socket.id]); // Notify others
